@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+</head>
+<body>
+	{% if not user.is_authenticated %}
+
+	<a href="{% url 'social:begin' 'facebook' %}">Facebook login</a>
+
+	{% else %}
+
+	<h1>Bienvenido {{ user.username }}</h1>
+	<img src="{{ user.avatar }}" >
+	<h3>Perfil del usuario</h3>
+	<p>{{ user.first_name }}</p>
+	<p>{{ user.last_name }}</p>
+	<p>{{ user.email }}</p>
+	<p>{{ user.gender }}</p>
+	
+	<a href="/salir/">LogOut</a>
+
+	{% endif %}
+	
+</body>
+</html>
